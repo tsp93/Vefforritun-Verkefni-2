@@ -105,8 +105,8 @@ Verkefni þetta er sett fyrir á GitHub og almennt ætti að skila því úr ein
 Til að byrja er hægt að afrita þetta repo og bæta við á sínu eigin:
 
 ```bash
-> git clone https://github.com/vefforritun/vef2-2019-v1.git
-> cd vef2-2019-v1
+> git clone https://github.com/vefforritun/vef2-2019-v2.git
+> cd vef2-2019-v2
 > git remote remove origin # fjarlægja remote sem verkefni er í
 > git remote add origin <slóð á repo> # bæta við í þínu repo
 > git push
