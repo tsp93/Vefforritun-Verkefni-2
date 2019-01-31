@@ -34,6 +34,8 @@ Tafla búin til
 Gögnum bætt við
 ```
 
+Athugið, fyrst þarf að setja upp `pg` pakkann úr NPM og keyra `npm install` fyrir þá pakka sem eru skilgreindir í `package.json`.
+
 _CRUD_ virkni fyrir verkefni skal setja upp í `db.js`.
 
 ### Prufugögn
