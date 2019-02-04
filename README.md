@@ -16,7 +16,7 @@ Verkefni 2 snýst um að setja upp vef sem bíður upp á senda inn atvinnuumsó
 * Litir eru
   * Border á input `#888`
   * Border ef input ef ógilt `#855`, bakgrunnur `#fbb`
-  * Bakgrunnur á texta þegar sveimað yfir `#bbb`, skipt með `easin-in` á `300ms`
+  * Bakgrunnur á takka þegar sveimað yfir `#bbb`, skipt með `easin-in` á `300ms`
 
 ## Gagnagrunnur
 
