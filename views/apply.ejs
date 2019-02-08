@@ -1,26 +1,43 @@
 <%- include('header') -%>
 
 <div>
+    <h1>Atvinnuumsókn</h1>
     <form action="/">
-        <label for="name">Nafn</label>
-        <input type="text" id="name" name="name" placeholder="Jón Jónsson" required>
-
-        <label for="email">Netfang</label>
-        <input type="email" id="email" name="email" placeholder="jon@jonsson.is" required>
-
-        <label for="phone">Sími</label>
-        <input type="tel" id="phone" name="phone" pattern="[0-7]{3}-[0-7]{4}" placeholder="123-4567" required>
-
-        <label for="intro">Kynning á þér</label>
-        <input type="text" id="intro" name="intro" minlength="100" required>
-
-        <fieldset>
-            <legend>Starf sem sótt er um:</legend>
-            <input type="radio" name="job" value="programmer">Forritari<br>
-            <input type="radio" name="job" value="designer">Hönnuður<br>
-            <input type="radio" name="job" value="leader">Verkefnastjóri<br>
-        </fieldset>
-
+        <ul>
+            <li>
+                <label for="name">Nafn</label>
+                <input type="text" id="name" name="name" placeholder="Jón Jónsson">
+            </li>
+            <li>
+                <label for="email">Netfang</label>
+                <input type="email" id="email" name="email" placeholder="jon@jonsson.is">
+            </li>
+            <li>
+                <label for="phone">Sími</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-7]{7}" placeholder="1234567">
+            </li>
+            <li class="intro">
+                <label for="intro">Kynning á þér</label>
+                <textarea rows="6" id="intro" name="intro" minlength="100" placeholder="Halló, ég heiti..."></textarea>
+            </li>
+            <fieldset>
+                <h2>Starf sem sótt er um:</h2>
+                <ul>
+                    <li class="rad">
+                        <input type="radio" name="job" id="pro" value="programmer">
+                        <label for="pro">Forritari</label>
+                    </li>
+                    <li class="rad">
+                        <input type="radio" name="job" id="des" value="designer">
+                        <label for="des">Hönnuður</label>
+                    </li>
+                    <li class="rad">
+                        <input type="radio" name="job" id="led" value="leader">
+                        <label for="led">Verkefnastjóri</label>
+                    </li>
+                </ul>
+            </fieldset>
+        </ul>
         <input type="submit" value="Senda umsókn">
     </form>
 </div>

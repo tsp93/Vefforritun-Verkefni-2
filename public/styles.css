@@ -16,6 +16,8 @@ html {
 
 main {
   font-family: 'Open Sans', sans-serif;
+  margin: 10em auto 5em auto;
+  max-width: 75em;
 }
 
 h1, h2, h3 {
@@ -30,6 +32,74 @@ h2 {
   font-size: 1.5em;
 }
 
-form label {
+ul {
+  list-style-type: none;
+}
+
+li {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 1%;
+}
+
+.rad {
+  flex-flow: row;
+  justify-content: flex-start;
+  padding: 2% 0;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+}
+
+label {
   font-size: 22px;
+}
+
+fieldset {
+  border: 0;
+  display: flex;
+  flex-flow: row;
+  width: 50%;
+}
+
+input {
+  border: 1px solid #888;
+  font: inherit;
+}
+
+input[type=text], input[type=email], input[type=tel], textarea {
+  border-radius: 4px;
+  padding: 0.5em;
+  width: 85%;
+}
+
+.intro {
+  align-items: flex-start;
+}
+
+input[type=radio] {
+  margin-right: 2%;
+}
+
+input[type=submit] {
+  background-color: white;
+  border-radius: 4px;
+  padding: 1%;
+  width: 10%;
+}
+
+input[type=submit]:hover {
+  background-color: gray;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+@media (max-width: 600px) {
+  li {
+    flex-flow: column wrap;
+  }
 }
