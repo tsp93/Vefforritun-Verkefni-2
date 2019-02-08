@@ -11,6 +11,25 @@
 
 html {
   box-sizing: border-box;
+  font-size: 16px;
 }
 
-/* todo útfæra útlit */
+main {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+form label {
+  font-size: 22px;
+}
