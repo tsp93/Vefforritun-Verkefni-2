@@ -31,10 +31,16 @@ h1 {
 
 h2 {
   font-size: 1.5em;
+  margin: 1rem 0;
 }
 
 ul {
   list-style-type: none;
+}
+
+.errorList {
+  list-style-type: disc;
+  margin-bottom: 2rem;
 }
 
 li {
@@ -43,6 +49,11 @@ li {
   flex-flow: row wrap;
   justify-content: space-between;
   padding: 1%;
+}
+
+.errorItem {
+  display: list-item;
+  padding: 2px;
 }
 
 form {
@@ -83,6 +94,7 @@ input[type=radio] {
 .rad {
   flex-flow: row;
   justify-content: flex-start;
+  margin: 1rem 0;
   padding: 1% 0;
 }
 
@@ -90,14 +102,25 @@ input[type=submit] {
   background-color: white;
   border-radius: 4px;
   height: 80%;
+  margin-bottom: 1rem;
   padding: 1%;
   width: 10em;
 }
 
 input[type=submit]:hover {
-  background-color: gray;
+  background-color: #bbb;
   cursor: pointer;
-  transition: 0.5s ease;
+  transition: 300ms ease-in;
+}
+
+.missing {
+  background-color: #fbb;
+  border-color: #855;
+}
+
+.missingrad li{
+  background-color: #fbb;
+  border-color: #855;
 }
 
 .applications {
@@ -115,7 +138,7 @@ input[type=submit]:hover {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding: 1%;
 }
 
@@ -128,5 +151,8 @@ input[type=submit]:hover {
   li {
     align-items: flex-start;
     flex-flow: column wrap;
+  }
+  .butts {
+    width: 75%;
   }
 }

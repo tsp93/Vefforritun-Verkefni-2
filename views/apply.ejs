@@ -6,40 +6,86 @@
         <ul>
             <li>
                 <label for="name">Nafn</label>
-                <input type="text" id="name" name="name" value="<%= data.name %>" placeholder="Jón Jónsson">
+                <% if(missing.includes('name')){ %>
+                    <input type="text" id="name" name="name" class="missing" value="<%= data.name %>" placeholder="Jón Jónsson">
+                <% }
+                else{ %> 
+                    <input type="text" id="name" name="name" value="<%= data.name %>" placeholder="Jón Jónsson">
+                <% } %>
             </li>
             <li>
                 <label for="email">Netfang</label>
-                <input type="email" id="email" name="email" <%if (data.email != '@') { %> <% value="data.email" %> <% } %> placeholder="jon@jonsson.is">
+                <% if(missing.includes('email')){ %>
+                    <input type="email" id="email" name="email" class="missing" <%if (data.email != '@') { %> <% value="data.email" %> <% } %> placeholder="jon@jonsson.is">
+                <% }
+                else{ %> 
+                    <input type="email" id="email" name="email" <%if (data.email != '@') { %> <% value="data.email" %> <% } %> placeholder="jon@jonsson.is">
+                <% } %>
             </li>
             <li>
                 <label for="phone">Sími</label>
-                <input type="tel" id="phone" name="phone" value="<%= data.phone %>" placeholder="123-4567">
+                <% if(missing.includes('phone')){ %>
+                    <input type="tel" id="phone" name="phone" class="missing" value="<%= data.phone %>" placeholder="123-4567">
+                <% }
+                else{ %> 
+                    <input type="tel" id="phone" name="phone" value="<%= data.phone %>" placeholder="123-4567">
+                <% } %>
             </li>
             <li class="text">
                 <label for="text">Kynning á þér</label>
-                <textarea rows="6" id="text" name="text" placeholder="Halló, ég heiti..."><%= data.text %></textarea>
+                <% if(missing.includes('text')){ %>
+                    <textarea rows="6" id="text" name="text" class="missing" placeholder="Halló, ég heiti..."><%= data.text %></textarea>
+                <% }
+                else{ %> 
+                    <textarea rows="6" id="text" name="text" placeholder="Halló, ég heiti..."><%= data.text %></textarea>
+                <% } %>
             </li>
             <fieldset>
                 <h2>Starf sem sótt er um:</h2>
-                <ul>
-                    <li class="rad">
-                        <input type="radio" name="job" id="pro" value="Forritari" <%if (data.job == 'Forritari') { %> checked <% } %>>
-                        <label for="pro">Forritari</label>
-                    </li>
-                    <li class="rad">
-                        <input type="radio" name="job" id="des" value="Hönnuður" <%if (data.job == 'Hönnuður') { %> checked <% } %>>
-                        <label for="des">Hönnuður</label>
-                    </li>
-                    <li class="rad">
-                        <input type="radio" name="job" id="led" value="Verkefnastjóri" <%if (data.job == 'Verkefnastjóri') { %> checked <% } %>>
-                        <label for="led">Verkefnastjóri</label>
-                    </li>
-                </ul>
+                <% if(missing.includes('job')){ %>
+                    <ul class="missingrad">
+                        <li class="rad">
+                            <input type="radio" name="job" id="pro" value="Forritari" <%if (data.job == 'Forritari') { %> checked <% } %>>
+                            <label for="pro">Forritari</label>
+                        </li>
+                        <li class="rad">
+                            <input type="radio" name="job" id="des" value="Hönnuður" <%if (data.job == 'Hönnuður') { %> checked <% } %>>
+                            <label for="des">Hönnuður</label>
+                        </li>
+                        <li class="rad">
+                            <input type="radio" name="job" id="led" value="Verkefnastjóri" <%if (data.job == 'Verkefnastjóri') { %> checked <% } %>>
+                            <label for="led">Verkefnastjóri</label>
+                        </li>
+                    </ul>
+                <% }
+                else{ %> 
+                    <ul>
+                        <li class="rad">
+                            <input type="radio" name="job" id="pro" value="Forritari" <%if (data.job == 'Forritari') { %> checked <% } %>>
+                            <label for="pro">Forritari</label>
+                        </li>
+                        <li class="rad">
+                            <input type="radio" name="job" id="des" value="Hönnuður" <%if (data.job == 'Hönnuður') { %> checked <% } %>>
+                            <label for="des">Hönnuður</label>
+                        </li>
+                        <li class="rad">
+                            <input type="radio" name="job" id="led" value="Verkefnastjóri" <%if (data.job == 'Verkefnastjóri') { %> checked <% } %>>
+                            <label for="led">Verkefnastjóri</label>
+                        </li>
+                    </ul>
+                <% } %>
             </fieldset>
         </ul>
+        <%if (errors.length != 0) { %>
+        <h2>Vandræði við að senda umsókn</h2>
+        <ul class="errorList">
+            <% errors.forEach((error) => { %>
+                <li class="errorItem"><%= error.msg %></li>
+            <% }) %>
+        </ul>
+        <% } %>
         <input type="submit" value="Senda umsókn">
-    </form>
+    </form> 
 </div>
 
 <%- include('footer') -%>

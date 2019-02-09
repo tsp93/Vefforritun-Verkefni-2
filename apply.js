@@ -48,19 +48,17 @@ const formValidation = [
 function form(req, res) {
   const data = {};
   res.render('apply', {
-    data, title: 'Umsókn',
+    data, title: 'Atvinnuumsókn', errors: [], missing: [],
   });
 }
 
 async function formPost(req, res) {
-  // fá öll gögn úr formi
   const {
     body: {
       name, email, phone, text, job,
     } = {},
   } = req;
 
-  // öll gögn hreinsuð úr formi
   const data = {
     name: xss(name),
     email: xss(email),
@@ -73,7 +71,13 @@ async function formPost(req, res) {
 
   if (!validation.isEmpty()) {
     const errors = validation.array();
-    return res.render('apply', { errors, data, title: 'Atvinnuumsókn' });
+    const missing = [];
+    errors.forEach((error) => {
+      missing.push(error.param);
+    });
+    return res.render('apply', {
+      data, title: 'Atvinnuumsókn', errors, missing,
+    });
   }
 
   await insert(data);
