@@ -25,7 +25,7 @@ async function fetch() {
   await client.connect();
 
   try {
-    const result = await client.query('SELECT * FROM applications');
+    const result = await client.query('SELECT * FROM applications ORDER BY id');
 
     const { rows } = result;
     return rows;
@@ -66,7 +66,7 @@ async function remove(id) {
 
   try {
     await client.query(query, values);
-    return rows;
+    return;
   } catch (err) {
     console.error('Error deleting data');
     throw err;

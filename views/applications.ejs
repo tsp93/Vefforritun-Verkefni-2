@@ -15,10 +15,14 @@
         <div class="butts">
             <% if(application.processed){ %>
                 <p>&#10004; Umsókn unnin: <%= application.updated.toISOString() %></p>
-            <% } else{ %>  
-                <button type="submit" value="<%= application.id %>" name="process">Vinna umsókn</button>
+            <% } else{ %> 
+                <form method="post" action="applications/process/<%= application.id %>" class="formbutt">
+                    <input type="submit" value="Vinna umsókn" name="process"></button>
+                </form>
             <% } %>
-            <button type="submit" value="<%= application.id %>" name="delete">Eyða umsókn</button>
+            <form method="post" action="applications/delete/<%= application.id %>" class="formbutt">
+                <input type="submit" value="Eyða umsókn" name="delete"></button>
+            </form>
         </div>
     <% }) %>
 </div>

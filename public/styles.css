@@ -61,7 +61,7 @@ fieldset {
   width: 100%;
 }
 
-input, textarea, button{
+input, textarea {
   border: 1px solid #888;
   font: inherit;
 }
@@ -86,14 +86,15 @@ input[type=radio] {
   padding: 1% 0;
 }
 
-input[type=submit], button {
+input[type=submit] {
   background-color: white;
   border-radius: 4px;
+  height: 80%;
   padding: 1%;
   width: 10em;
 }
 
-input[type=submit]:hover, button:hover {
+input[type=submit]:hover {
   background-color: gray;
   cursor: pointer;
   transition: 0.5s ease;
@@ -116,13 +117,11 @@ input[type=submit]:hover, button:hover {
   justify-content: space-between;
   margin-bottom: 2rem;
   padding: 1%;
-  width: 90%;
 }
 
-button:hover {
-  background-color: gray;
-  cursor: pointer;
-  transition: 0.5s ease;
+.formbutt {
+  height: 3rem;
+  width: 20%;
 }
 
 @media (max-width: 600px) {
