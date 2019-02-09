@@ -59,7 +59,7 @@ async function formPost(req, res) {
     } = {},
   } = req;
 
-  const data = {
+  let data = {
     name: xss(name),
     email: xss(email),
     phone: xss(phone),
@@ -82,7 +82,7 @@ async function formPost(req, res) {
 
   await insert(data);
 
-  data={};
+  data = {};
   return res.redirect('/thanks');
 }
 
