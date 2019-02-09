@@ -3,7 +3,7 @@ const express = require('express');
 const { check, validationResult } = require('express-validator/check');
 const { sanitize } = require('express-validator/filter');
 
-const { insert } = require('./db')
+const { insert } = require('./db');
 
 const router = express.Router();
 
@@ -21,15 +21,15 @@ const formValidation = [
     .withMessage('Netfang verður að vera netfang'),
 
   check('phone')
-    .matches(/^[0-9]{3}-?[0-9]{4}$/)
+    .matches(/^[0-9]{3}(-| )?[0-9]{4}$/)
     .withMessage('Símanúmer verður að vera sjö tölustafir'),
 
-  check('intro')
-    .isLength({ min: 100})
+  check('text')
+    .isLength({ min: 100 })
     .withMessage('Kynning verður að vera að minnsta kosti 100 stafir'),
 
   check('job')
-    .isIn(['programmer', 'designer', 'leader'])
+    .isIn(['Forritari', 'Hönnuður', 'Verkefnastjóri'])
     .withMessage('Velja verður starf'),
 
   sanitize('name')
@@ -40,23 +40,58 @@ const formValidation = [
   sanitize('phone')
     .blacklist('-')
     .toInt(),
-  sanitize('intro')
+  sanitize('text')
     .trim()
     .escape(),
 ];
+
+function form(req, res) {
+  const data = {};
+  res.render('apply', {
+    data, title: 'Umsókn',
+  });
+}
+
+async function formPost(req, res) {
+  // fá öll gögn úr formi
+  const {
+    body: {
+      name, email, phone, text, job,
+    } = {},
+  } = req;
+
+  // öll gögn hreinsuð úr formi
+  const data = {
+    name: xss(name),
+    email: xss(email),
+    phone: xss(phone),
+    text: xss(text),
+    job: xss(job),
+  };
+
+  const validation = validationResult(req);
+
+  if (!validation.isEmpty()) {
+    const errors = validation.array();
+    return res.render('apply', { errors, data, title: 'Atvinnuumsókn' });
+  }
+
+  await insert(data);
+
+  data={};
+  return res.redirect('/thanks');
+}
+
+function thanks(req, res) {
+  return res.render('thanks', { title: 'Takk fyrir' });
+}
 
 function catchErrors(fn) {
   return (req, res, next) => fn(req, res, next).catch(next);
 }
 
-async function list(req, res) {
-  const title = 'Umsókn';
-
-  res.render('apply', {
-    title,
-  });
-}
-
-router.get('/', catchErrors(list));
+router.get('/', form);
+router.post('/', formValidation, catchErrors(formPost));
+router.get('/thanks', thanks);
 
 module.exports = router;

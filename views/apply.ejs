@@ -2,37 +2,37 @@
 
 <div>
     <h1>Atvinnuumsókn</h1>
-    <form action="/">
+    <form method="post" action="/">
         <ul>
             <li>
                 <label for="name">Nafn</label>
-                <input type="text" id="name" name="name" placeholder="Jón Jónsson">
+                <input type="text" id="name" name="name" value="<%= data.name %>" placeholder="Jón Jónsson">
             </li>
             <li>
                 <label for="email">Netfang</label>
-                <input type="email" id="email" name="email" placeholder="jon@jonsson.is">
+                <input type="email" id="email" name="email" <%if (data.email != '@') { %> <% value="data.email" %> <% } %> placeholder="jon@jonsson.is">
             </li>
             <li>
                 <label for="phone">Sími</label>
-                <input type="tel" id="phone" name="phone" pattern="[0-7]{7}" placeholder="1234567">
+                <input type="tel" id="phone" name="phone" value="<%= data.phone %>" placeholder="123-4567">
             </li>
-            <li class="intro">
-                <label for="intro">Kynning á þér</label>
-                <textarea rows="6" id="intro" name="intro" minlength="100" placeholder="Halló, ég heiti..."></textarea>
+            <li class="text">
+                <label for="text">Kynning á þér</label>
+                <textarea rows="6" id="text" name="text" placeholder="Halló, ég heiti..."><%= data.text %></textarea>
             </li>
             <fieldset>
                 <h2>Starf sem sótt er um:</h2>
                 <ul>
                     <li class="rad">
-                        <input type="radio" name="job" id="pro" value="programmer">
+                        <input type="radio" name="job" id="pro" value="Forritari" <%if (data.job == 'Forritari') { %> checked <% } %>>
                         <label for="pro">Forritari</label>
                     </li>
                     <li class="rad">
-                        <input type="radio" name="job" id="des" value="designer">
+                        <input type="radio" name="job" id="des" value="Hönnuður" <%if (data.job == 'Hönnuður') { %> checked <% } %>>
                         <label for="des">Hönnuður</label>
                     </li>
                     <li class="rad">
-                        <input type="radio" name="job" id="led" value="leader">
+                        <input type="radio" name="job" id="led" value="Verkefnastjóri" <%if (data.job == 'Verkefnastjóri') { %> checked <% } %>>
                         <label for="led">Verkefnastjóri</label>
                     </li>
                 </ul>

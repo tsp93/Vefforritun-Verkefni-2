@@ -17,7 +17,7 @@ VALUES
 INSERT INTO applications
   (name, email, phone, job, text)
 VALUES
-  ('Anna Önnudóttir', '	anna@example.org	', 3333333, 'forritari', 'Sed in sem sagittis, fringilla justo 
+  ('Anna Önnudóttir', 'anna@example.org', 3333333, 'forritari', 'Sed in sem sagittis, fringilla justo 
   eget, vulputate nunc. Cras pharetra faucibus blandit. Sed non porta ligula, non efficitur dolor.');
 
 INSERT INTO applications
@@ -32,7 +32,7 @@ VALUES
 INSERT INTO applications
   (name, email, phone, job, text)
 VALUES
-  ('John Johnson', '	john@example.org', 1000000, 'verkefnastjóri', 'Etiam accumsan neque nec mauris fringilla, 
+  ('John Johnson', 'john@example.org', 1000000, 'verkefnastjóri', 'Etiam accumsan neque nec mauris fringilla, 
   id dignissim tortor maximus. Proin sit amet sodales felis. Vivamus ut est magna. Quisque porta quam ac orci 
   dignissim convallis. Nunc efficitur sagittis felis at gravida. Praesent quis quam molestie, rutrum mi sed, 
   malesuada nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse felis tortor, 

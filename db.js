@@ -1,14 +1,14 @@
 const { Client } = require('pg');
 
-const connectionString = process.env.DATABASE_URL || 'postgres://:@localhost/v2';
+const connectionString = process.env.DATABASE_URL;
 
 async function insert(data) {
   const client = new Client({ connectionString });
 
   await client.connect();
 
-  const query = 'INSERT INTO applications(name, email, ssn, amount) VALUES($1, $2, $3, $4)';
-  const values = [data.name, data.email, data.ssn, data.amount];
+  const query = 'INSERT INTO applications(name, email, phone, text, job) VALUES($1, $2, $3, $4, $5)';
+  const values = [data.name, data.email, data.phone, data.text, data.job];
 
   try {
     await client.query(query, values);
@@ -37,36 +37,38 @@ async function fetch() {
   }
 }
 
-async function update(data) {
+async function update(id) {
   const client = new Client({ connectionString });
 
   await client.connect();
 
-  try {
-    const result = await client.query(query);
+  const query = 'UPDATE applications SET processed=true, updated=current_timestamp WHERE id=$1';
+  const values = [id];
 
-    const { rows } = result;
-    return rows;
+  try {
+    await client.query(query, values);
+    return;
   } catch (err) {
-    console.error('Error running query');
+    console.error('Error updating data');
     throw err;
   } finally {
     await client.end();
   }
 }
 
-async function remove(data) {
+async function remove(id) {
   const client = new Client({ connectionString });
 
   await client.connect();
 
-  try {
-    const result = await client.query(query);
+  const query = 'DELETE FROM applications WHERE id=$1';
+  const values = [id];
 
-    const { rows } = result;
+  try {
+    await client.query(query, values);
     return rows;
   } catch (err) {
-    console.error('Error running query');
+    console.error('Error deleting data');
     throw err;
   } finally {
     await client.end();

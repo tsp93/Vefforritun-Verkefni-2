@@ -1,36 +1,26 @@
 <%- include('header') -%>
 
-<div>
-    <h1>Atvinnuumsóknir</h1>
-    <form action="/">
-        <ul>
-            <li>
-                <label for="name">Nafn</label>
-                <input type="text" id="name" name="name" placeholder="Jón Jónsson" required>
-            </li>
-            <li>
-                <label for="email">Netfang</label>
-                <input type="email" id="email" name="email" placeholder="jon@jonsson.is" required>
-            </li>
-            <li>
-                <label for="phone">Sími</label>
-                <input type="tel" id="phone" name="phone" pattern="[0-7]{3}-[0-7]{4}" placeholder="123-4567" required>
-            </li>
-            <li class="intro">
-                <label for="intro">Kynning á þér</label>
-                <textarea rows="20" cols="50" id="intro" name="intro" minlength="100" required></textarea>
-            </li>
-            <li>
-                <fieldset>
-                    <legend>Starf sem sótt er um:</legend>
-                    <input type="radio" name="job" value="programmer" required>Forritari<br>
-                    <input type="radio" name="job" value="designer" required>Hönnuður<br>
-                    <input type="radio" name="job" value="leader" required>Verkefnastjóri<br>
-                </fieldset>
-            </li>
-        </ul>
-        <input type="submit" value="Senda umsókn">
-    </form>
+<h1>Atvinnuumsóknir</h1>
+<div class="applications">
+    <% applications.forEach((application) => { %>
+        <div class="appinfo">
+            <h2><%= application.name%></h2>
+            <a href="mailto:<%= application.email %>"><%= application.email %></a>
+            <p>Sími: <%= application.phone %></p>
+            <p>Umsókn send: <%= application.created.toISOString() %></p>
+        </div>
+        <div class="apptext">
+            <p><%= application.text %></p>
+        </div>
+        <div class="butts">
+            <% if(application.processed){ %>
+                <p>&#10004; Umsókn unnin: <%= application.updated.toISOString() %></p>
+            <% } else{ %>  
+                <button type="submit" value="<%= application.id %>" name="process">Vinna umsókn</button>
+            <% } %>
+            <button type="submit" value="<%= application.id %>" name="delete">Eyða umsókn</button>
+        </div>
+    <% }) %>
 </div>
 
 <%- include('footer') -%>
