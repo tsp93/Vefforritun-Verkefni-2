@@ -14,8 +14,6 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-/* todo aðrar stillingar á express appi */
-
 app.use(apply);
 app.use(applications);
 
